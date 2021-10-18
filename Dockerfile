@@ -11,5 +11,5 @@ RUN rpmbuild -ba /root/rpmbuild/SPECS/openvpn.spec
 FROM registry.access.redhat.com/ubi8:latest
 COPY --from=builder /root/rpmbuild/RPMS/x86_64/pkcs11-helper-1* ./
 COPY --from=builder /root/rpmbuild/RPMS/x86_64/openvpn-2* ./
-RUN dnf -y update && dnf -y install socat *.rpm && dnf clean all
+RUN dnf -y update && dnf -y install socat stunnel *.rpm && dnf clean all
 RUN rm -f *.rpm
